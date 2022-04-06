@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path')
-require("dotenv").config({path: 'config.env'})
+require("dotenv").config({path: '../config.env'})
 
 
 let port = process.env.PORT || 5000
@@ -18,9 +18,6 @@ let refresh_token=''
 
 let app = express()
 
-app.use(
-  express.static(path.join(__dirname, "./client/build"))
-);
 
 
 app.get('/auth/login', (req, res) => {
@@ -85,11 +82,6 @@ app.post('/auth/refresh', (req, res) => {
       .catch(err => console.log(err))
   })
 
-  this.app.get("*", (req, res) => {
-    res.sendFile(
-      path.join(__dirname, "./client/build/index.html")
-    );
-  });
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
