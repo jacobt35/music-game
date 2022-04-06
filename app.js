@@ -18,6 +18,10 @@ let refresh_token=''
 
 let app = express()
 
+app.use(
+  express.static(path.join(__dirname, "./client/build"))
+);
+
 
 app.get('/auth/login', (req, res) => {
     // stuff to add on to authorize url
@@ -81,15 +85,12 @@ app.post('/auth/refresh', (req, res) => {
       .catch(err => console.log(err))
   })
 
+  this.app.get("*", (req, res) => {
+    res.sendFile(
+      path.join(__dirname, "./client/build/index.html")
+    );
+  });
+
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
 })
-
-
-
-
-/*require('dotenv').config('config.env');
-const Server = require('./models/server');
-const server = new Server();
-
-server.listen(); */
