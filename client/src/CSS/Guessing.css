@@ -1,0 +1,33 @@
+/* https://stackoverflow.com/questions/35393429/how-to-get-current-screen-width-in-css */
+@media screen and (min-width: 480px) {
+
+    .guessTable {
+        width: 50vw;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    table {
+        width: 50vw;
+        height: 25vw;
+        border: 1px solid black;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        padding: 50%;
+    }
+    .guess{
+        text-align: center;
+        padding-bottom: 10px;
+    }
+}
+
+    .answer {
+        width: 50vw;
+        margin: auto;
+    }
+
