@@ -8,7 +8,7 @@ let port = process.env.PORT || 5000
 
 let redirect = "&redirect_uri=http://localhost:3000/auth/callback"
 //let redirect = "&redirect_uri=https://playlist-game.vercel.app/callback"
-//let redirect = `&redirect_uri=playlistgame.netlify.app/auth/callback`
+//let redirect = `&redirect_uri=playlistgame.netlify.app/auth/callbac`
 
 let spotify_client_id = process.env.SPOTIFY_CLIENT_ID
 let spotify_client_secret = process.env.SPOTIFY_CLIENT_SECRET
