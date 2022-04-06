@@ -18,7 +18,7 @@ let refresh_token=''
 
 let app = express()
 
-
+app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get('/auth/login', (req, res) => {
     // stuff to add on to authorize url
@@ -81,6 +81,11 @@ app.post('/auth/refresh', (req, res) => {
     }).then(token => access_token=token.data.access_token)
       .catch(err => console.log(err))
   })
+
+    // All remaining requests return the React app, so it can handle routing.
+    app.get('/*', function(request, response) {
+      response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+    });
 
 
 app.listen(port, () => {
