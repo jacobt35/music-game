@@ -15,12 +15,14 @@ function Correct(props) {
         }
         // use as key
         let numCorrect = parseInt(localStorage.getItem('total_correct'))
-        console.log(numCorrect)
         // numCorrect: song
         songs[numCorrect] = song
         localStorage.setItem('playlist_correct', JSON.stringify(songs))
         localStorage.setItem('total_correct', (numCorrect += 1).toString())
     }, [])
+
+
+    //document.getElementById('play-btn').addEventListener('click', props.fullSong)
 
     return (
         
@@ -28,7 +30,7 @@ function Correct(props) {
         <div>
             <p>Congrats you correctly guessed <strong><em>{props.song.name}</em></strong> by <strong><em>{props.song.artists[0].name}</em></strong> in 1 guess!!!!</p>
         </div> :
-       <div><h1>Congrats you correctly guessed <strong><em>{props.song.name}</em></strong> by <strong><em>{props.song.artists[0].name}</em></strong> in {props.attempts} guesses!!!!</h1></div>
+       <div><p>Congrats you correctly guessed <strong><em>{props.song.name}</em></strong> by <strong><em>{props.song.artists[0].name}</em></strong> in {props.attempts} guesses!!!!</p></div>
        
     )
 

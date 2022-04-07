@@ -38,6 +38,7 @@ function GuessingPage(props) {
                 setCorrect(false)
                 setOver(false)
                 setAttempt(1)
+                setOneTry(false)
                 setSong(props.current_track)
             }
         }
@@ -50,12 +51,14 @@ function GuessingPage(props) {
         let attemptRow = document.getElementById(`guess${attempt.toString()}`)
         if (answer === '') {
                 attemptRow.innerText = 'Skipped'
+                setAttempt(attempt + 1)
         } else {
             attemptRow.innerText = answer
         }
         
         if (song.name.toLowerCase().includes(answer.toLowerCase()) && answer !== '') {
             if(attempt === 1) {
+                //console.log('here 1 time')
                 setOneTry(true)
             }
             setCorrect(true)
@@ -77,8 +80,8 @@ function GuessingPage(props) {
     }
 
     return (
-    over ?  <Incorrect /> :
-    correct ? <Correct oneTry={oneTry} attempts={attempt} song={song} /> :
+    over ?  <Incorrect song={song}/> :
+    correct ? <Correct oneTry={oneTry} attempts={attempt} song={song} fullSong={props.fullSong}/> :
         <>
         <div className='guessTable'>
         <Table striped bordered hover variant="dark" size='sm'>

@@ -14,7 +14,7 @@ function App() {
     async function getToken() {
       const response = await fetch('/auth/token')
       const tokens = await response.json();
-      console.log(tokens)
+      //console.log(tokens)
       if(tokens.access_token === undefined) {
         setToken('')
         setRefresh('')

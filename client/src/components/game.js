@@ -29,7 +29,7 @@ const [time, setTime] = useState(1000)
     // if one is null both are null
     //localStorage.clear()
     if (localStorage.getItem('playlist_correct') === null) {
-        console.log('here in locallllll')
+       // // console.log('here in locallllll')
         localStorage.setItem('playlist_correct', JSON.stringify({}))
         localStorage.setItem('playlist_incorrect', JSON.stringify({}))
         localStorage.setItem('total_correct', 0)
@@ -57,17 +57,17 @@ const [time, setTime] = useState(1000)
                 // lets get a new token
                 props.newToken()
                 window.location.reload()
-                console.error('Failed to authenticate', message);
+                // console.error('Failed to authenticate', message);
               });
 
     
             player.addListener('ready', ({ device_id }) => {
                 setID(device_id)
-                console.log('Ready with Device ID', device_id);
+                // console.log('Ready with Device ID', device_id);
             });
     
             player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
+                // console.log('Device ID has gone offline', device_id);
             });
     
     
@@ -101,7 +101,7 @@ const [time, setTime] = useState(1000)
     }
 
     function incTime() {
-        console.log('increasing time and time is ' + time)
+        // console.log('increasing time and time is ' + time)
         switch(time){
             case 1000: setTime(3000)
                     break;
@@ -129,21 +129,26 @@ const [time, setTime] = useState(1000)
             'Authorization': `Bearer ${props.token}`
          },
         }).then(res => {
-            console.log(res)
+            // console.log(res)
             setTime(1000)
             //setRestarting(true)
         })
-          .catch(err => console.log(err))
+          .catch(err =>  console.log(err))
         })
+    }
+
+    function playFull() {
+        // console.log('here')
+        player.togglePlay()
     }
 
 
 
    return (
     <>
-    <Guess current_track={current_track} incTime={incTime}/>
+    <Guess current_track={current_track} incTime={incTime} fullSong={playFull}/>
       <div class='playback'>
-        <Button className='play' variant='dark' size='med' onClick={() => guessTimer()}>
+        <Button className='play' id='play-btn'variant='dark' size='med' onClick={() => guessTimer()}>
             Play
         </Button>{' '}
 

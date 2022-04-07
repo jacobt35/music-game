@@ -7,7 +7,7 @@ require("dotenv").config({path: '../config.env'})
 let port = process.env.PORT || 5000
 
 //let redirect = "&redirect_uri=http://localhost:3000/auth/callback"
-let redirect = "&redirect_uri=https://playlist-game.herokuapp.com/callback"
+let redirect = "&redirect_uri=https://playlist-game.herokuapp.com/auth/callback"
 //let redirect = `&redirect_uri=playlistgame.netlify.app/auth/callbac`
 
 let spotify_client_id = process.env.SPOTIFY_CLIENT_ID
@@ -18,7 +18,7 @@ let refresh_token=''
 
 let app = express()
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+//app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 app.get('/auth/login', (req, res) => {
     // stuff to add on to authorize url
@@ -83,9 +83,9 @@ app.post('/auth/refresh', (req, res) => {
   })
 
     // All remaining requests return the React app, so it can handle routing.
-    app.get('/*', function(request, response) {
-      response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
-    });
+    //app.get('/*', function(request, response) {
+      //response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+    //});
 
 
 app.listen(port, () => {
