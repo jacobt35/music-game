@@ -69,6 +69,7 @@ function GuessingPage(props) {
             }
             // wrong guess increase
             setAttempt(attempt + 1)
+            document.getElementById('guess').value = ""
             props.incTime()
         }
     }
