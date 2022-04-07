@@ -57,17 +57,17 @@ const [time, setTime] = useState(1000)
                 // lets get a new token
                 props.newToken()
                 window.location.reload()
-                // console.error('Failed to authenticate', message);
+                 console.error('Failed to authenticate', message);
               });
 
     
             player.addListener('ready', ({ device_id }) => {
                 setID(device_id)
-                // console.log('Ready with Device ID', device_id);
+                console.log('Ready with Device ID', device_id);
             });
     
             player.addListener('not_ready', ({ device_id }) => {
-                // console.log('Device ID has gone offline', device_id);
+                console.log('Device ID has gone offline', device_id);
             });
     
     
@@ -129,7 +129,7 @@ const [time, setTime] = useState(1000)
             'Authorization': `Bearer ${props.token}`
          },
         }).then(res => {
-            // console.log(res)
+            //console.log(res)
             setTime(1000)
             //setRestarting(true)
         })
